@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0c1112">
+<title>Rune Warden</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="960" height="576"></canvas>
+
+  <div id="hud">
+    <div id="visionHud"><span id="portrait" aria-label="Kari">ᚱ</span><span id="lvl">LVL 1</span><span class="bar"><span id="hpbar"></span></span><span class="bar mp"><span id="mpbar"></span></span><canvas id="minimapCanvas" width="84" height="50" aria-label="Realm map"></canvas><span id="minimap"></span><span id="armor"></span><span id="mats"></span></div>
+    <div id="hearts"></div>
+    <div id="runes"></div>
+    <div id="keys"></div>
+    <div id="party"></div>
+    <div id="score">0</div>
+    <div id="levelname"></div>
+    <button id="pauseBtn" aria-label="Pause">II</button>
+    <button id="muteBtn" aria-label="Mute sound">♪</button>
+    <button id="viewBtn" aria-label="Switch view">ISO</button>
+    <button id="cmdBtn" aria-label="Command mode">CMD</button>
+    <button id="allBtn" aria-label="Select all party">ALL</button>
+    <button id="dbgBtn" aria-label="Debug readout">DBG</button>
+  </div>
+  <div id="quickbar"><button id="skillsBtn" aria-label="Skills">✦ Skills</button><button id="craftBtn" aria-label="Craft">⚒ Anvil</button><button id="armorBtn" aria-label="Armor">⛨ Armor</button><button id="potionBtn" aria-label="HP potion">♥ HP</button><button aria-label="MP potion" disabled>✦ MP</button></div>
+
+  <div id="dbg" class="hidden"></div>
+
+  <div id="banner" class="hidden"></div>
+
+  <div id="stickZone"><div id="stickBase"><div id="stickKnob"></div></div></div>
+  <button id="atkBtn" aria-label="Attack">⚔</button>
+
+  <div id="panel" class="overlay hidden"><div class="panel" id="panelBody"></div></div>
+
+  <div id="screen" class="overlay">
+    <div class="panel">
+      <h1>RUNE WARDEN</h1>
+      <p class="story">The Sky Span is shattered. The Hollow King broke it, and the
+      beacons of the six realms have gone dark. You are <b>Kari</b>, keeper of
+      the last beacon. Old Yrsa's last words were simple: <i>relight them all.</i></p>
+      <p class="how">Move: left-side stick or WASD / arrows.<br>Attack: sword button or Space.<br>
+      View: ISO/TOP button switches between the simulated-3D view and top-down.<br>
+      CMD button: command mode — tap a hero to select, tap ground to move them,
+      tap a foe to attack. Folk you meet in command mode join your party.<br>
+      Reach the glowing beacon in each realm. Talk to folk you meet; some will help.
+      Hrafn the raven scouts ahead.</p>
+      <button id="startBtn" class="big">Begin the Watch</button>
+      <p id="best" class="small"></p>
+      <img class="visionImg" src="vision-dungeon.jpg" alt="Vision: isometric torchlit rune dungeon">
+      <p class="small">v1.9.0 — vision hero: blue steel armor, helmet, rune staff casting blue magic, stone arch + rune pedestal at the beacon, moss, bigger crystals and chests. Gameplay unchanged underneath.</p>
+      <p class="small">An original tale in the spirit of the old Norse dungeon crawls.
+      No gods were copied; the Hollow King is ours alone.</p>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>

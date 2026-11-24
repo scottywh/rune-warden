@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0c1112">
+<title>Rune Warden 3D</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="960" height="576"></canvas>
+  <canvas id="view3d"></canvas>
+
+  <div id="hud">
+    <div id="visionHud"><span id="portrait" aria-label="Kari">ᚱ</span><span id="lvl">LVL 1</span><span class="bar"><span id="hpbar"></span></span><span class="bar mp"><span id="mpbar"></span></span><canvas id="minimapCanvas" width="84" height="50" aria-label="Realm map"></canvas><span id="minimap"></span><span id="armor"></span><span id="mats"></span></div>
+    <div id="hearts"></div>
+    <div id="runes"></div>
+    <div id="keys"></div>
+    <div id="party"></div>
+    <div id="score">0</div>
+    <div id="levelname"></div>
+    <button id="pauseBtn" aria-label="Pause">II</button>
+    <button id="muteBtn" aria-label="Mute sound">♪</button>
+    <button id="musicBtn" aria-label="Toggle music">♫</button>
+    <button id="viewBtn" aria-label="Switch view">ISO</button>
+    <button id="dimBtn" aria-label="Toggle 3D">3D</button>
+    <button id="camBtn" aria-label="Camera mode">CAM</button>
+    <button id="cmdBtn" aria-label="Command mode">CMD</button>
+    <button id="switchBtn" aria-label="Switch hero">SWITCH</button>
+    <button id="allBtn" aria-label="Select all party">ALL</button>
+    <button id="dbgBtn" aria-label="Debug readout">DBG</button>
+  </div>
+  <div id="quickbar"><button id="skillsBtn" aria-label="Skills">Skills</button><button id="craftBtn" aria-label="Craft">Craft</button><button id="armorBtn" aria-label="Armor">Armor</button><button id="potionBtn" aria-label="HP potion">HP potion</button><button aria-label="MP potion" disabled>MP potion</button></div>
+
+  <div id="dbg" class="hidden"></div>
+
+  <div id="banner" class="hidden"></div>
+
+  <div id="stickZone"><div id="stickBase"><div id="stickKnob"></div></div></div>
+  <button id="atkBtn" aria-label="Rune attack">✦</button>
+
+  <div id="panel" class="overlay hidden"><div class="panel" id="panelBody"></div></div>
+
+  <div id="pauseMenu" class="overlay hidden">
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <p class="small" id="pauseInfo"></p>
+      <button id="resumeBtn" class="big">Resume</button>
+      <button id="saveBtn" class="big">Save Game</button>
+      <button id="quitBtn" class="big">Quit to Title</button>
+    </div>
+  </div>
+
+  <div id="screen" class="overlay">
+    <div class="panel">
+      <h1>RUNE WARDEN</h1>
+      <p class="story">The Sky Span is shattered. The Hollow King broke it, and the
+      beacons of the ten realms have gone dark. You are <b>Kari</b>, keeper of
+      the last beacon. Old Yrsa's last words were simple: <i>relight them all.</i></p>
+      <button id="playBtn" class="big" onclick="ac(); playGame()">Play</button>
+      <button id="continueBtn" class="big" onclick="ac(); continueGame()">Continue</button>
+      <button id="newBtn" class="big" onclick="ac(); newGame()">New Game</button>
+      <p id="saveInfo" class="small"></p>
+      <p class="how">Move: left-side stick or WASD / arrows.<br>Attack: rune button or Space — Kari casts blue rune magic now, same damage as the old sword.<br>
+      3D is the default view. CAM cycles chase / iso / first-person; drag the right side to orbit, Q/E rotate. The 3D button falls back to the 2D view.<br>
+      CMD button: command mode — tap a hero to select, tap ground to move them,
+      tap a foe to attack. Folk you meet join your party. SWITCH button: play as the next hero in your party, single player — one keeper cannot carry three Sigils alone.<br>
+      Reach the glowing beacon in each realm. Talk to folk you meet; some will help.
+      Hrafn the raven scouts ahead.</p>
+      <p id="best" class="small"></p>
+      <img class="visionImg" src="vision-dungeon.jpg" alt="Vision: isometric torchlit rune dungeon">
+      <p class="small">v3d 4.0.3 — full 3D, one game: the full 1.9 game (skills, armor tiers, Runic Anvil, Crystal Spider) rendered in real Three.js. Real KayKit Mage hero (CC0), loot chests and enemy drops, thinner trees, and the Sunlit Clearing outdoor mission, stone dungeon with torches and wall cutaway, chase / iso / first-person cameras. New in 4.0.0: three bigger realms (Windscar Fjord, Ember Deep, Sunken Vault) with Span Sigils sealed behind brass-key gates, new foes (wraith, brute, screecher), and folk who joined you can now be played — SWITCH walks through your whole party, single player. 4.0.1: your party now stays with you outside command mode, and folk join the moment you meet them. 4.0.2: each new realm is one folk trial - Windscar is Eira (Wind Gate), Ember Deep is Mira (Ember Gate), Sunken Vault is Tove (Tide Gate) - and a fourth recruit, Eira, waits in Windscar Fjord. 4.0.3: a real pause menu - Resume, Save Game, Quit to Title - so tabbing out to another app can never strand the game. The 2D game stays as its own game, and 2D is still available here with the 3D button.</p>
+      <p class="small" id="kariStatus">Kari model: loading…</p>
+      <p class="small">An original tale in the spirit of the old Norse dungeon crawls.
+      No gods were copied; the Hollow King is ours alone.</p>
+    </div>
+  </div>
+</div>
+<script src="three.min.js"></script>
+<script src="GLTFLoader.js"></script>
+  <script src="SkeletonUtils.js"></script>
+<script src="game.js"></script>
+<script src="render3d.js"></script>
+</body>
+</html>
